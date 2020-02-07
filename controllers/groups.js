@@ -3,8 +3,9 @@ const { Group, User } = require("../models");
 // CONTROLLER: functions that are called at /api/groups/
 
 module.exports = {
-  findAll: (req, res) => {
-    Group.find(req.query)
+  find: (req, res) => {
+    const { id } = req.query;
+    Group.find({ _id: id })
       .populate("users")
       .then(data => res.json(data))
       .catch(err => res.status(422).json(err));
@@ -37,6 +38,11 @@ module.exports = {
     User.findById(req.query.id)
       .populate("groups")
       .then(user => res.json(user.groups))
+      .catch(err => res.status(422).json(err));
+  },
+  byGroup: (req, res) => {
+    Group.findById(req.query.id)
+      .then(user => res.json(group))
       .catch(err => res.status(422).json(err));
   },
   hostedEvents: (req, res) => {

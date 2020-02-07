@@ -8,9 +8,11 @@ const { groupController } = require("../../controllers");
 // http://localhost:3000/api/groups/
 router
   .route("/")
-  .get(groupController.findAll)
+  .get(groupController.find)
   .post(groupController.create);
 
 router.route("/byUser").get(groupController.byUser);
+
+router.route("/group").get(groupController.byGroup)
 
 module.exports = router;

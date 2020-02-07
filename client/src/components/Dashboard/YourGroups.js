@@ -27,6 +27,14 @@ class YourGroups extends Component {
       .then(() => this.populateGroups());
   }
 
+  getGroup(id) {
+    API.getGroupById(id)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(err => console.log(err));
+  }
+
   populateGroups() {
     if (this.state.user) {
       API.getGroupByUser(this.state.user).then(groups => {
@@ -44,7 +52,8 @@ class YourGroups extends Component {
         // console.log(g._id);
         return (
           <Link
-            to="/group"
+            // to="/group"
+            onClick={() => this.getGroup(g._id)}
             key={g.groupName + Date.now()}
             className="imageColumn"
           >

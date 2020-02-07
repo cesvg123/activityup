@@ -37,6 +37,9 @@ export default {
   createEvent(eventObj) {
     return axios.post("api/events/sessionUser/events", eventObj);
   },
+  getGroupById(id) {
+    return axios.get(`api/groups?id=${id}`);
+  },
   // FIXME needs validation check of working route
   getEvents() {
     return axios.get("api/events/sessionUser/events");
