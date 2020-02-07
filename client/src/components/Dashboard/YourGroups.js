@@ -41,7 +41,7 @@ class YourGroups extends Component {
   renderGroups() {
     if (this.state.groups) {
       let groupdivs = this.state.groups.map(g => {
-        // console.log(g);
+        // console.log(g._id);
         return (
           <Link
             to="/group"
